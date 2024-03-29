@@ -1,6 +1,6 @@
 FROM python:3.9-alpine
 
-RUN apk add --no-cache gcc musl-dev
+RUN apk add --no-cache gcc g++ musl-dev
 
 WORKDIR /code
 
