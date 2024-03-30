@@ -135,7 +135,7 @@ def add_repo(url: str, background_tasks: BackgroundTasks):
     user, repo = [s for s in url.split("/")[-2:] if s.replace("-", "").isalnum()]
     if not user or not repo:
         return {"error": "Invalid URL"}
-    url = "https://github.com" + user + "/" + repo
+    url = "https://github.com/" + user + "/" + repo
     id = urls.get(url)
     if id:
         return {"success": str(id)}
