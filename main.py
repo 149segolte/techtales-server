@@ -6,6 +6,7 @@ import shutil
 import pickle
 import git
 import numpy as np
+import torch
 
 from sentence_transformers import SentenceTransformer, util
 from textwrap import dedent
