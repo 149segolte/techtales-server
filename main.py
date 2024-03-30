@@ -108,10 +108,10 @@ def embed_repo(id, url):
     if not os.path.isfile(path / '.embedding'):
         print('Embeddings not found in {}. Generating embeddings now.'.format(path))
         repo = git.Repo.clone_from(url, path)
-        functions = _get_repo_functions(path, _supported_file_extensions(), nodes_to_extract)
+        functions = _get_repo_functions(str(path), _supported_file_extensions(), nodes_to_extract)
 
         if not functions:
-            print('No supported languages found in {}. Exiting'.format(path))
+            print('No supported languages found in {}. Exiting'.format(str(path)))
             return
 
         print('Embedding {} functions in {} batches. This is done once and cached in .embeddings'.format(
@@ -120,7 +120,7 @@ def embed_repo(id, url):
             [f['text'] for f in functions], convert_to_tensor=True, show_progress_bar=True, batch_size=batch_size)
 
         dataset = {'functions': functions, 'embeddings': corpus_embeddings}
-        with gzip.open(path + '/' + '.embedding', 'w') as f:
+        with gzip.open(path / '.embedding', 'w') as f:
             f.write(pickle.dumps(dataset))
     return
 
