@@ -1,4 +1,4 @@
-FROM python:3.9-alpine
+FROM python:slim
 
 RUN apk add --no-cache gcc g++ musl-dev
 
