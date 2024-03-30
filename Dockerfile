@@ -1,7 +1,5 @@
 FROM python:slim
 
-RUN apk add --no-cache gcc g++ musl-dev
-
 WORKDIR /code
 
 COPY ./requirements.txt /code/requirements.txt
